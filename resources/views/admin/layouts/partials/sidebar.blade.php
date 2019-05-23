@@ -16,20 +16,23 @@
         </div>
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li>
+                <li class="{{ Request::segment(2) === '' || Request::segment(2) === 'home' ? 'active' : null }}">
                     <a href="{{ route('admin.home') }}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">&ensp;Dashboard</span></a>
                 </li>
-                <li>
+                <li class="{{ Request::segment(2) === 'foods' ? 'active' : null }}">
                     <a href="{{ route('admin.food') }}" aria-expanded="false"><i class="mdi mdi-food-variant"></i><span class="hide-menu">&ensp;Food</span></a>
                 </li>
-                <li>
+                <li class="{{ Request::segment(2) === 'medicine' ? 'active' : null }}">
                     <a href="{{ route('admin.medicine') }}" aria-expanded="false"><i class="mdi mdi-medical-bag"></i><span class="hide-menu">&ensp;Medicine</span></a>
                 </li>
-                <li>
-                    <a href="{{ route('admin.washing-and-spa') }}" aria-expanded="false"><i class="mdi mdi-water-pump"></i><span class="hide-menu">&ensp;Washing and Spa</span></a>
+                <li class="{{ Request::segment(2) === 'washing-and-spa' ? 'active' : null }}">
+                    <a href="{{ route('admin.washing-and-spa') }}" aria-expanded="false"><i class="fa fa-shower"></i><span class="hide-menu">&ensp;Washing and Spa</span></a>
                 </li>
-                <li>
-                    <a href="#" aria-expanded="false"><i class="fa fa-dollar"></i><span class="hide-menu">&ensp;PetShop</span></a>
+                <li class="{{ Request::segment(2) === 'petshop' ? 'active' : null }}">
+                    <a href="#" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">&ensp;PetShop</span></a>
+                </li>
+                <li class="{{ Request::segment(2) === 'buying-animal' ? 'active' : null }}">
+                    <a href="{{ route('admin.buying-animal') }}" aria-expanded="false"><i class="fa fa-dollar"></i><span class="hide-menu">&ensp;Buying Animal</span></a>
                 </li>
             </ul>
         </nav>

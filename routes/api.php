@@ -24,3 +24,5 @@ Route::get('washing-and-spa/{id}', 'Api\WashingAndSpaController@show');
 Route::post('washing-and-spa', 'Api\WashingAndSpaController@store');
 Route::post('washing-and-spa/{id}', 'Api\WashingAndSpaController@update');
 Route::delete('washing-and-spa/{id}', 'Api\WashingAndSpaController@destroy');
+
+Route::get('buying-animal', 'Api\BuyingAnimalController@index');

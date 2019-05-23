@@ -22,6 +22,7 @@ Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logou
 
 Route::prefix('admin')->group(function() {
     Route::get('/', 'AdminController@index')->name('admin.home');
+    Route::get('/home', 'AdminController@index');
     Route::get('/login', 'AdminAuth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'AdminAuth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/logout', 'AdminAuth\AdminLoginController@logout')->name('admin.logout');
@@ -46,5 +47,12 @@ Route::prefix('admin')->group(function() {
     Route::get('/washing-and-spa/{id}/edit', 'WashingAndSpaController@edit')->name('admin.washing-and-spa.edit');
     Route::patch('/washing-and-spa/{id}', 'WashingAndSpaController@update')->name('admin.washing-and-spa.update');
     Route::delete('/washing-and-spa/{id}', 'WashingAndSpaController@destroy')->name('admin.washing-and-spa.destroy');
+
+    Route::get('/buying-animal', 'BuyingAnimalController@index')->name('admin.buying-animal');
+    Route::get('/buying-animal/create', 'BuyingAnimalController@create')->name('admin.buying-animal.create');
+    Route::post('/buying-animal', 'BuyingAnimalController@store')->name('admin.buying-animal.store');
+    Route::get('/buying-animal/{id}/edit', 'BuyingAnimalController@edit')->name('admin.buying-animal.edit');
+    Route::patch('/buying-animal/{id}', 'BuyingAnimalController@update')->name('admin.buying-animal.update');
+    Route::delete('/buying-animal/{id}', 'BuyingAnimalController@destroy')->name('admin.buying-animal.destroy');
 
 });

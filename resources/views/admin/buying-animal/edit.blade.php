@@ -8,11 +8,11 @@
     <div class="container-fluid">
         <div class="row page-titles">
             <div class="col-md-5 col-8 align-self-center">
-                <h3 class="text-themecolor m-b-0 m-t-0">Form New Food</h3>
+                <h3 class="text-themecolor m-b-0 m-t-0">Form Edit Buying Animal</h3>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('admin.food') }}">Food</a></li>
-                    <li class="breadcrumb-item active">New</li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.buying-animal') }}">Buying Animal</a></li>
+                    <li class="breadcrumb-item active">Edit</li>
                 </ol>
             </div>
         </div>
@@ -41,8 +41,9 @@
                     <div class="card-header">
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.food.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.buying-animal.update', $buyingAnimal->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
+                            @method('PATCH')
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-8 align-self-center">
@@ -52,7 +53,8 @@
                                                     <div class="card-body">
                                                         <label for="input-file-now">Image <span
                                                                     class="text-danger">*</span></label>
-                                                        <input name="image" data-max-file-size="1M" type="file" required
+                                                        <input name="image" data-max-file-size="1M" type="file"
+                                                               data-default-file="{{ asset('images/' . $buyingAnimal->image) }}"
                                                                id="input-file-now" class="dropify form-control"/>
                                                     </div>
                                                 </div>
@@ -61,41 +63,31 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="control-label">Food Name <span
+                                            <label class="control-label">Animal Name <span
                                                         class="text-danger">*</span></label>
                                             <input name="name" required type="text" id="name" class="form-control"
-                                                   placeholder="Enter food name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Food Price <span
-                                                        class="text-danger">*</span></label>
-                                            <div class="controls">
-                                                <input type="text" name="price" class="form-control" required
-                                                       data-validation-containsnumber-regex="(\d)+"
-                                                       data-validation-containsnumber-message="No Characters Allowed, Only Numbers"
-                                                       placeholder="Enter food price">
-                                            </div>
+                                                  value="{{ $buyingAnimal->name }}" placeholder="Enter animal name">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label">Seller Name <span
+                                            <label class="control-label">Address <span
                                                         class="text-danger">*</span></label>
-                                            <input name="seller" required type="text" id="seller" class="form-control"
-                                                   placeholder="Enter seller name">
+                                            <input name="address" required type="text" id="address" class="form-control"
+                                                   value="{{ $buyingAnimal->address }}" placeholder="Enter address">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label">Category </label>
+                                            <label class="control-label">Contact Person <span
+                                                        class="text-danger">*</span> </label>
                                             <div class="controls">
-                                                <input type="text" name="category" id="category" class="form-control" placeholder="Enter category">
+                                                <input type="text" name="phone" id="phone" class="form-control"
+                                                       value="{{ $buyingAnimal->phone }}" placeholder="Enter contact person">
                                             </div>
                                         </div>
                                     </div>
@@ -103,14 +95,16 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="control-label">Description</label>
-                                            <textarea name="description" id="description" class="form-control" cols="30" rows="10" placeholder="Enter food description"></textarea>
+                                            <label class="control-label">Description <span
+                                                        class="text-danger">*</span></label>
+                                            <textarea name="description" id="description" class="form-control" cols="30"
+                                                      rows="10" placeholder="Enter animal description">{{ $buyingAnimal->description }}</textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-actions">
-                                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-check"></i>
-                                        Save
+                                    <button type="submit" class="btn btn-outline-warning"><i class="fa fa-check"></i>
+                                        Update
                                     </button>
                                 </div>
                             </div>

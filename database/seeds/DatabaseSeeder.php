@@ -53,6 +53,14 @@ class DatabaseSeeder extends Seeder
                 'districts' => 'Tegal',
                 'city' => 'Tegal',
             ]);
+
+            DB::table('buying_animals')->insert([
+                'image' => 'default.png',
+                'name' => 'Animal ' . $i,
+                'description' => "This is description of animal " . $i,
+                'address' => 'This is the address of animal ' . $i,
+                'phone' => '08989898989'
+            ]);
         }
     }
 }
