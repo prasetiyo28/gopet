@@ -55,4 +55,11 @@ Route::prefix('admin')->group(function() {
     Route::patch('/buying-animal/{id}', 'BuyingAnimalController@update')->name('admin.buying-animal.update');
     Route::delete('/buying-animal/{id}', 'BuyingAnimalController@destroy')->name('admin.buying-animal.destroy');
 
+    Route::get('/petshop', 'PetShopController@index')->name('admin.petshop');
+    Route::get('/petshop/create', 'PetShopController@create')->name('admin.petshop.create');
+    Route::post('/petshop', 'PetShopController@store')->name('admin.petshop.store');
+    Route::get('/petshop/{id}/edit', 'PetShopController@edit')->name('admin.petshop.edit');
+    Route::patch('/petshop/{id}', 'PetShopController@update')->name('admin.petshop.update');
+    Route::delete('/petshop/{id}', 'PetShopController@destroy')->name('admin.petshop.destroy');
+
 });
