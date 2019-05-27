@@ -30,3 +30,9 @@ Route::get('buying-animal/{id}', 'Api\BuyingAnimalController@show');
 Route::post('buying-animal', 'Api\BuyingAnimalController@store');
 Route::post('buying-animal/{id}', 'Api\BuyingAnimalController@update');
 Route::delete('buying-animal/{id}', 'Api\BuyingAnimalController@destroy');
+
+Route::get('petshop', 'Api\PetShopController@index');
+Route::get('petshop/{id}', 'Api\PetShopController@show');
+Route::post('petshop', 'Api\PetShopController@store');
+Route::post('petshop/{id}', 'Api\PetShopController@update');
+Route::delete('petshop/{id}', 'Api\PetShopController@destroy');
