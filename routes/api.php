@@ -36,3 +36,6 @@ Route::get('petshop/{id}', 'Api\PetShopController@show');
 Route::post('petshop', 'Api\PetShopController@store');
 Route::post('petshop/{id}', 'Api\PetShopController@update');
 Route::delete('petshop/{id}', 'Api\PetShopController@destroy');
+
+Route::get('community', 'Api\CommunityController@index');
+Route::get('community/{id}', 'Api\CommunityController@show');

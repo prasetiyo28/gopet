@@ -62,4 +62,8 @@ Route::prefix('admin')->group(function() {
     Route::patch('/petshop/{id}', 'PetShopController@update')->name('admin.petshop.update');
     Route::delete('/petshop/{id}', 'PetShopController@destroy')->name('admin.petshop.destroy');
 
+    Route::get('/community', 'CommunityController@index')->name('admin.community');
+    Route::get('/community/create', 'CommunityController@create')->name('admin.community.create');
+    Route::post('/community', 'CommunityController@store')->name('admin.community.store');
+
 });

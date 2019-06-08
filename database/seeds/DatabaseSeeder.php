@@ -1,6 +1,7 @@
 <?php
 
 use App\BuyingAnimal;
+use App\Community;
 use App\Food;
 use App\Medicine;
 use App\PetShop;
@@ -73,7 +74,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        foreach (range(1,100) as $i) {
+        foreach (range(1,50) as $i) {
             BuyingAnimal::create([
                 'image' => 'default.png',
                 'name' => $faker->firstName,
@@ -98,50 +99,15 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-//        for ($i=1;$i<=10;$i++){
-//            DB::table('foods')->insert([
-//                'image' => 'default.png',
-//                'name' => 'Food ' . $i,
-//                'price' => 10000,
-//                'description' => "This is description of Food " . $i,
-//                'category' => "Type A",
-//                'seller' => "Seller " . $i,
-//            ]);
-//
-//            DB::table('medicines')->insert([
-//                'image' => 'default.png',
-//                'name' => 'Medikit ' . $i,
-//                'price' => 10000,
-//                'description' => "This is description of Medikit " . $i,
-//                'category' => "Type A",
-//                'seller' => "Seller " . $i,
-//            ]);
-//
-//            DB::table('washing_and_spas')->insert([
-//                'image' => 'default.png',
-//                'name' => 'Washing and Spa ' . $i,
-//                'description' => "This is description of Washing of Spa " . $i,
-//                'street' => 'This is street of Washing and Spa ' . $i,
-//                'districts' => 'Tegal',
-//                'city' => 'Tegal',
-//            ]);
-//
-//            DB::table('buying_animals')->insert([
-//                'image' => 'default.png',
-//                'name' => 'Animal ' . $i,
-//                'description' => "This is description of animal " . $i,
-//                'address' => 'This is the address of animal ' . $i,
-//                'phone' => '08989898989'
-//            ]);
-//
-//            DB::table('pet_shops')->insert([
-//                'image' => 'default.png',
-//                'name' => 'PetShop ' . $i,
-//                'description' => "This is description of petshop " . $i,
-//                'street' => 'This is the street of petshop ' . $i,
-//                'districts' => 'Margadana',
-//                'city' => 'Tegal',
-//            ]);
-//        }
+        foreach (range(1,50) as $i) {
+            Community::create([
+                'image' => 'default.png',
+                'name' => $faker->firstName . "Community",
+                'description' => $faker->text(300),
+                'leader' => $faker->name,
+                'address' => $faker->address,
+                'phone' => $faker->phoneNumber
+            ]);
+        }
     }
 }
