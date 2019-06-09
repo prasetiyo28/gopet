@@ -65,5 +65,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/community', 'CommunityController@index')->name('admin.community');
     Route::get('/community/create', 'CommunityController@create')->name('admin.community.create');
     Route::post('/community', 'CommunityController@store')->name('admin.community.store');
+    Route::get('/community/{id}/edit', 'CommunityController@edit')->name('admin.community.edit');
+    Route::patch('/community/{id}', 'CommunityController@update')->name('admin.community.update');
+    Route::delete('/community/{id}', 'CommunityController@destroy')->name('admin.community.destroy');
 
 });

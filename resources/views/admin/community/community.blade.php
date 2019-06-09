@@ -64,7 +64,7 @@
                                         <td>{{ $community->address }}</td>
                                         <td>{{ $community->phone }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-xs btn-outline-warning">
+                                            <a href="{{ route('admin.community.edit', $community->id) }}" class="btn btn-xs btn-outline-warning">
                                                 <i class="fa fa-pencil"></i>&ensp;Edit</a>
                                             <a href="" class="btn btn-xs btn-outline-danger" data-toggle="modal"
                                                data-target="#deleteModal{{$community->id}}">
@@ -83,7 +83,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="#"
+                                                            <form action="{{ route('admin.community.destroy', $community->id) }}"
                                                                   method="POST">
                                                                 @csrf
                                                                 @method('DELETE')

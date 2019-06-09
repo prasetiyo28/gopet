@@ -89,9 +89,12 @@ class CommunityController extends Controller
      * @param  \App\Community  $community
      * @return \Illuminate\Http\Response
      */
-    public function edit(Community $community)
+    public function edit($id)
     {
-        //
+        $community = Community::find($id);
+        return view('admin.community.edit', [
+           'community' => $community,
+        ]);
     }
 
     /**
@@ -101,9 +104,35 @@ class CommunityController extends Controller
      * @param  \App\Community  $community
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Community $community)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'image' => 'mimes:jpg,jpeg,png|max:1024',
+            'name' => 'required|string',
+            'description' => '',
+            'leader' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+        ]);
+
+        $community = Community::find($id);
+
+        if ($request->image != null) {
+            if ($community->image != 'default.png') {
+                Storage::delete($community->image);
+            }
+            $image = $request->file('image')->store('community');
+            $community->image = $image;
+        }
+
+        $community->name = $request->name;
+        $community->description = $request->description;
+        $community->leader = $request->leader;
+        $community->address = $request->address;
+        $community->phone = $request->phone;
+
+        $community->update();
+        return redirect()->route('admin.community')->with(['success' => 'A chosen community has been updated']);
     }
 
     /**
@@ -112,8 +141,10 @@ class CommunityController extends Controller
      * @param  \App\Community  $community
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Community $community)
+    public function destroy($id)
     {
-        //
+        $community = Community::find($id);
+        $community->delete();
+        return redirect()->route('admin.community')->with(['success' => 'A chosen community has been removed']);
     }
 }
