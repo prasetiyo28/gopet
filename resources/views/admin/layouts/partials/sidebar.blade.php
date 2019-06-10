@@ -37,6 +37,9 @@
                 <li class="{{ Request::segment(2) === 'community' ? 'active' : null }}">
                     <a href="{{ route('admin.community') }}" aria-expanded="false"><i class="mdi mdi-google-circles-communities"></i><span class="hide-menu">&ensp;Community</span></a>
                 </li>
+                <li class="{{ Request::segment(2) === 'doctor' ? 'active' : null }}">
+                    <a href="{{ route('admin.doctor') }}" aria-expanded="false"><i class="mdi mdi-google-circles-communities"></i><span class="hide-menu">&ensp;Doctor</span></a>
+                </li>
             </ul>
         </nav>
     </div>

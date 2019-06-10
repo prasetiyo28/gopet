@@ -69,4 +69,11 @@ Route::prefix('admin')->group(function() {
     Route::patch('/community/{id}', 'CommunityController@update')->name('admin.community.update');
     Route::delete('/community/{id}', 'CommunityController@destroy')->name('admin.community.destroy');
 
+    Route::get('/doctor', 'DoctorController@index')->name('admin.doctor');
+    Route::get('/doctor/create', 'DoctorController@create')->name('admin.doctor.create');
+    Route::post('/doctor', 'DoctorController@store')->name('admin.doctor.store');
+    Route::get('/doctor/{id}/edit', 'DoctorController@edit')->name('admin.doctor.edit');
+    Route::patch('/doctor/{id}', 'DoctorController@update')->name('admin.doctor.update');
+    Route::delete('/doctor/{id}', 'DoctorController@destroy')->name('admin.doctor.destroy');
+
 });

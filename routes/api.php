@@ -39,3 +39,6 @@ Route::delete('petshop/{id}', 'Api\PetShopController@destroy');
 
 Route::get('community', 'Api\CommunityController@index');
 Route::get('community/{id}', 'Api\CommunityController@show');
+
+Route::get('doctor', 'Api\DoctorController@index');
+Route::get('doctor/{id}', 'Api\DoctorController@show');
