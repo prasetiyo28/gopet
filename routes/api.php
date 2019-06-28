@@ -42,3 +42,6 @@ Route::get('community/{id}', 'Api\CommunityController@show');
 
 Route::get('doctor', 'Api\DoctorController@index');
 Route::get('doctor/{id}', 'Api\DoctorController@show');
+
+// Route for all history for each user.
+Route::get('history/{user_id}', 'Api\DiagnosisController@showByUser');

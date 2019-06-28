@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+Route::post('/home/store', 'DiagnosisController@store')->name('user.diagnosis.store');
 
 Route::prefix('admin')->group(function() {
     Route::get('/', 'AdminController@index')->name('admin.home');
@@ -75,5 +76,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/doctor/{id}/edit', 'DoctorController@edit')->name('admin.doctor.edit');
     Route::patch('/doctor/{id}', 'DoctorController@update')->name('admin.doctor.update');
     Route::delete('/doctor/{id}', 'DoctorController@destroy')->name('admin.doctor.destroy');
+
+
 
 });

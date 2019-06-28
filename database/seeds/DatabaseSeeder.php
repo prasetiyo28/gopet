@@ -2,6 +2,7 @@
 
 use App\BuyingAnimal;
 use App\Community;
+use App\Doctor;
 use App\Food;
 use App\Medicine;
 use App\PetShop;
@@ -32,6 +33,13 @@ class DatabaseSeeder extends Seeder
             'image' => 'default.png',
             'name' => 'User1',
             'email' => 'user1@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
+
+        DB::table('users')->insert([
+            'image' => 'default.png',
+            'name' => 'User2',
+            'email' => 'user2@gmail.com',
             'password' => Hash::make('12345678'),
         ]);
 
