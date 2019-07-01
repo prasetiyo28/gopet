@@ -45,3 +45,6 @@ Route::get('doctor/{id}', 'Api\DoctorController@show');
 
 // Route for all history for each user.
 Route::get('history/{user_id}', 'Api\DiagnosisController@showByUser');
+
+// route for register user
+Route::post('user/register', 'Api\RegisterController@store');

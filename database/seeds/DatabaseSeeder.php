@@ -29,19 +29,19 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
-        DB::table('users')->insert([
-            'image' => 'default.png',
-            'name' => 'User1',
-            'email' => 'user1@gmail.com',
-            'password' => Hash::make('12345678'),
-        ]);
+        // DB::table('users')->insert([
+        //     'image' => 'default.png',
+        //     'name' => 'User1',
+        //     'email' => 'user1@gmail.com',
+        //     'password' => Hash::make('12345678'),
+        // ]);
 
-        DB::table('users')->insert([
-            'image' => 'default.png',
-            'name' => 'User2',
-            'email' => 'user2@gmail.com',
-            'password' => Hash::make('12345678'),
-        ]);
+        // DB::table('users')->insert([
+        //     'image' => 'default.png',
+        //     'name' => 'User2',
+        //     'email' => 'user2@gmail.com',
+        //     'password' => Hash::make('12345678'),
+        // ]);
 
         foreach (range(1,50) as $i) {
             Food::create([
