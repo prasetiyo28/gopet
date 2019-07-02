@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Medicine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MedicineController extends Controller
 {
