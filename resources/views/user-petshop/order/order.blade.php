@@ -1,36 +1,16 @@
-@extends('admin.layouts.app')
+@extends('user-petshop.app')
 
 @section('content')
     <div class="container-fluid">
         <div class="row page-titles">
             <div class="col-md-5 col-8 align-self-center">
-                <h3 class="text-themecolor m-b-0 m-t-0">Food</h3>
+                <h3 class="text-themecolor m-b-0 m-t-0">Orders</h3>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active">Food</li>
+                    <li class="breadcrumb-item active">Order</li>
                 </ol>
             </div>
-            <div class="col-md-7 col-4 align-self-center">
-                <div class="d-flex m-t-10 justify-content-end">
-                    <a href="{{ route('admin.food.create') }}" class="btn btn-outline-success btn-sm">
-                        <i class="fa fa-plus"></i>&ensp;New Food</a>
-                </div>
-            </div>
         </div>
-
-        @if($message = Session::get('success'))
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="alert alert-success">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h3 class="text-success"><i class="fa fa-check-circle"></i> Success</h3>
-                        {{ $message }}
-                    </div>
-                </div>
-            </div>
-        @endif
 
         <div class="row">
             <div class="col-lg-12">
@@ -41,41 +21,32 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Image</th>
+                                    <th>User</th>
                                     <th>Food</th>
-                                    <th>Price</th>
-                                    <th>Seller</th>
-                                    <th>Category</th>
-                                    <th>Description</th>
-                                    <th>Action</th>
+                                    <th>Status</th>
+                                    <th>Created At</th>
+                                    <th>Change Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($foods as $key => $food)
+                                @foreach($orders as $key => $order)
                                     <tr>
                                         <td>{{ ($currentPage - 1) * $perPage + $key +  1 }}</td>
+                                        <td>{{ $order->user->name }}</td>
+                                        <td>{{ $order->food->name }}</td>
+                                        <td>@if($order->status == 0) <span class="text-danger">Belum Proses</span> @else <span class="text-success">Sudah Proses</span> @endif</td>
+                                        <td>{{ $order->created_at }}</td>
                                         <td>
-                                            <img src="{{ asset('images/' . $food->image) }}" alt="food"
-                                                 style="width: auto; height: 60px">
-                                        </td>
-                                        <td>{{ $food->name }}</td>
-                                        <td>{{ $food->price }}</td>
-                                        <td>{{ $food->userPetshop->name }}</td>
-                                        <td>{{ $food->category }}</td>
-                                        <td>{{ $food->description }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.food.edit', $food->id) }}" class="btn btn-xs btn-outline-warning">
-                                                <i class="fa fa-pencil"></i>&ensp;Edit</a>
-                                            <a href="" class="btn btn-xs btn-outline-danger" data-toggle="modal"
-                                               data-target="#deleteModal{{$food->id}}">
-                                                <i class="fa fa-trash"></i>&ensp;Remove</a>
-                                            <div class="modal fade" id="deleteModal{{$food->id}}" tabindex="-1"
+                                            <a href="" class="btn btn-xs btn-outline-success" data-toggle="modal"
+                                               data-target="#change{{$order->id}}">
+                                                <i class="fa fa-refresh"></i></a>
+                                            <div class="modal fade" id="change{{$order->id}}" tabindex="-1"
                                                  role="dialog" aria-labelledby="exampleModalLabel1">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title text-danger" id="exampleModalLabel1">
-                                                                <b>WARNING !!!</b>
+                                                            <h4 class="modal-title text-primary" id="exampleModalLabel1">
+                                                                <b>Change order status</b>
                                                             </h4>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
@@ -83,13 +54,13 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{ route('admin.food.destroy', $food->id) }}"
+                                                            <form action="{{ route('user-petshop.update', $order->id) }}"
                                                                   method="POST">
                                                                 @csrf
-                                                                @method('DELETE')
+                                                                @method('PATCH')
                                                                 <p>
-                                                                    Are you sure to remove "
-                                                                    <b class="text-danger">{{ $food->name }}</b>"
+                                                                    Are you sure to change status "
+                                                                    <b class="text-danger">{{ $order->name }}</b>"
                                                                     ?
                                                                 </p>
                                                                 <div class="modal-footer">
@@ -100,7 +71,7 @@
                                                                     </button>
                                                                     <button type="submit"
                                                                             class="btn btn-outline-danger btn-sm">
-                                                                        <i class="fa fa-check"></i>&ensp;Yes, remove this
+                                                                        <i class="fa fa-check"></i>&ensp;Yes, change this
                                                                         record
                                                                     </button>
                                                                 </div>
@@ -115,10 +86,10 @@
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-center">
-                                {{ $foods->links() }}
+                                {{ $orders->links() }}
                             </div>
                             <div class="d-flex justify-content-center">
-                                <p class="subtitle">Showing {{ $foods->firstItem() }} - {{ $foods->lastItem() }} of {{ $foods->total() }} entries</p>
+                                <p class="subtitle">Showing {{ $orders->firstItem() }} - {{ $orders->lastItem() }} of {{ $orders->total() }} entries</p>
                             </div>
                         </div>
                     </div>

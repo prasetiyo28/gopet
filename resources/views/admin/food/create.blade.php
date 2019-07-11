@@ -85,10 +85,14 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label">Seller Name <span
-                                                        class="text-danger">*</span></label>
-                                            <input name="seller" required type="text" id="seller" class="form-control"
-                                                   placeholder="Enter seller name">
+                                            <label class="control-label">Seller Name
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <select name="id_petshop" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                                @foreach($userPetshops as $petshop)
+                                                    <option value="{{ $petshop->id }}">{{ $petshop->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

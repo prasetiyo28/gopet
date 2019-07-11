@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('image')->default("default.png");
             $table->string('name');
             $table->string('email')->unique();
+            $table->text('address')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('api_token');

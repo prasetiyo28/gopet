@@ -57,6 +57,11 @@ return [
             'provider' => 'admins',
             'hash' => false,
         ],
+
+        'petshop' => [
+            'driver' => 'session',
+            'provider' => 'petshops'
+        ]
     ],
 
     /*
@@ -85,6 +90,11 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
+        ],
+
+        'petshops' => [
+            'driver' => 'eloquent',
+            'model' => App\UserPetshop::class,
         ],
 
         // 'users' => [
@@ -117,6 +127,12 @@ return [
 
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 15,
+        ],
+
+        'petshops' => [
+            'provider' => 'petshops',
             'table' => 'password_resets',
             'expire' => 15,
         ],

@@ -84,8 +84,11 @@
                                         <div class="form-group">
                                             <label class="control-label">Seller Name <span
                                                         class="text-danger">*</span></label>
-                                            <input value="{{ $food->seller }}" name="seller" required type="text" id="seller" class="form-control"
-                                                   placeholder="Enter seller name">
+                                            <select name="id_petshop" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                                @foreach($userPetshops as $petshop)
+                                                    <option value="{{ $petshop->id }}" @if($food->id_petshop == $petshop->id) selected @endif>{{ $petshop->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Food;
+use App\UserPetshop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -36,7 +37,10 @@ class FoodController extends Controller
      */
     public function create()
     {
-        return view('admin.food.create');
+        $userPetshops = UserPetshop::all();
+        return view('admin.food.create', [
+            'userPetshops' => $userPetshops
+        ]);
     }
 
     /**
@@ -51,7 +55,7 @@ class FoodController extends Controller
             'image' => 'required|mimes:jpg,jpeg,png|max:1024',
             'name' => 'required|string',
             'price' => 'required|numeric',
-            'seller' => 'required|string',
+            'id_petshop' => 'required',
             'category' => '',
             'description' => ''
         ]);
@@ -61,7 +65,7 @@ class FoodController extends Controller
         $food->image = $image;
         $food->name = $request->name;
         $food->price = $request->price;
-        $food->seller = $request->seller;
+        $food->id_petshop = $request->id_petshop;
         $food->category = $request->category;
         $food->description = $request->description;
         $food->save();
@@ -89,8 +93,10 @@ class FoodController extends Controller
     public function edit($id)
     {
         $food = Food::find($id);
+        $userPetshops = UserPetshop::all();
         return view('admin.food.edit', [
             'food' => $food,
+            'userPetshops' => $userPetshops
         ]);
     }
 
@@ -107,7 +113,7 @@ class FoodController extends Controller
             'image' => 'mimes:jpg,jpeg,png|max:1024',
             'name' => 'required|string',
             'price' => 'required|numeric',
-            'seller' => 'required|string',
+            'id_petshop' => 'required',
             'category' => '',
             'description' => ''
         ]);
@@ -122,7 +128,7 @@ class FoodController extends Controller
         }
         $food->name = $request->name;
         $food->price = $request->price;
-        $food->seller = $request->seller;
+        $food->id_petshop = $request->id_petshop;
         $food->category = $request->category;
         $food->description = $request->description;
         $food->update();

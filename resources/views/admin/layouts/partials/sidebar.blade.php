@@ -40,6 +40,9 @@
                 <li class="{{ Request::segment(2) === 'doctor' ? 'active' : null }}">
                     <a href="{{ route('admin.doctor') }}" aria-expanded="false"><i class="mdi mdi-google-circles-communities"></i><span class="hide-menu">&ensp;Doctor</span></a>
                 </li>
+                <li class="{{ Request::segment(2) === 'order' ? 'active' : null }}">
+                    <a href="{{ route('admin.order') }}" aria-expanded="false"><i class="mdi mdi-google-circles-communities"></i><span class="hide-menu">&ensp;Order</span></a>
+                </li>
             </ul>
         </nav>
     </div>

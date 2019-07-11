@@ -46,7 +46,12 @@ Route::get('doctor/{id}', 'Api\DoctorController@show');
 // Route for all history for each user.
 Route::get('history/{user_id}', 'Api\DiagnosisController@showByUser');
 
+// Route get order history for each user
+Route::get('user/order/history/{id_user}', 'Api\UserPetshopController@history');
+
 // route for register user
 Route::post('user/register', 'Api\RegisterController@store');
 // route for login user
 Route::post('user/login', 'Api\LoginController@store');
+
+Route::post('user/order', 'Api\UserPetshopController@store');

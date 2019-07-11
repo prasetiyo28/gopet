@@ -26,5 +26,26 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345678'),
         ]);
+
+        DB::table('user_petshops')->insert([
+            'image' => 'default.png',
+            'name' => 'Popo Care',
+            'email' => 'popo@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
+
+        DB::table('user_petshops')->insert([
+            'image' => 'default.png',
+            'name' => 'CHS Petshop',
+            'email' => 'chs@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
+
+        DB::table('user_petshops')->insert([
+            'image' => 'default.png',
+            'name' => 'HEHE Petshop',
+            'email' => 'hehe@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
     }
 }
