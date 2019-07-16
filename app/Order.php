@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $fillable = [
-        'id_user', 'id_petshop', 'id_food', 'status',
+        'id_user', 'id_petshop', 'id_item', 'status',
     ];
 
     public function user(){
@@ -18,7 +18,7 @@ class Order extends Model
         return $this->belongsTo(UserPetshop::class, 'id_petshop', 'id');
     }
 
-    public function food(){
-        return $this->belongsTo(Food::class, 'id_food', 'id');
+    public function item(){
+        return $this->belongsTo(Item::class, 'id_item', 'id');
     }
 }

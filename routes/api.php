@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
+Route::get('item', 'Api\ItemController@index');
+Route::get('item/{id}', 'Api\ItemController@show');
+
 Route::get('foods', 'Api\FoodController@index');
 Route::get('foods/{id}', 'Api\FoodController@show');
 Route::post('foods', 'Api\FoodController@store');
@@ -47,7 +50,7 @@ Route::get('doctor/{id}', 'Api\DoctorController@show');
 Route::get('history/{user_id}', 'Api\DiagnosisController@showByUser');
 
 // Route get order history for each user
-Route::get('user/order/history/{id_user}', 'Api\UserPetshopController@history');
+Route::get('user/order/history', 'Api\UserPetshopController@history');
 
 // route for register user
 Route::post('user/register', 'Api\RegisterController@store');

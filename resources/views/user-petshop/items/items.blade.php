@@ -1,19 +1,19 @@
-@extends('admin.layouts.app')
+@extends('user-petshop.app')
 
 @section('content')
     <div class="container-fluid">
         <div class="row page-titles">
             <div class="col-md-5 col-8 align-self-center">
-                <h3 class="text-themecolor m-b-0 m-t-0">Doctor</h3>
+                <h3 class="text-themecolor m-b-0 m-t-0">Items</h3>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active">Doctor</li>
+                    <li class="breadcrumb-item active">Items</li>
                 </ol>
             </div>
             <div class="col-md-7 col-4 align-self-center">
                 <div class="d-flex m-t-10 justify-content-end">
-                    <a href="{{ route('admin.doctor.create') }}" class="btn btn-outline-success btn-sm">
-                        <i class="fa fa-plus"></i>&ensp;New Doctor</a>
+                    <a href="{{ route('user-petshop.item.create') }}" class="btn btn-outline-success btn-sm">
+                        <i class="fa fa-plus"></i>&ensp;New Item</a>
                 </div>
             </div>
         </div>
@@ -41,52 +41,33 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>QR-Code</th>
+                                    <th>Image</th>
                                     <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Category</th>
+                                    <th>Description</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($doctors as $key => $doctor)
+                                @foreach($items as $key => $item)
                                     <tr>
                                         <td>{{ ($currentPage - 1) * $perPage + $key +  1 }}</td>
                                         <td>
-                                            <img src="{{ asset('images/' . $doctor->qrcode) }}" style="height: 200%;width: auto" alt="qrcode">
+                                            <img src="{{ asset('images/' . $item->image) }}" alt="item"
+                                                 style="width: auto; height: 60px">
                                         </td>
-                                        <td>{{ $doctor->name }}</td>
-                                        <td>{{ $doctor->email }}</td>
-                                        <td>{{ $doctor->address }}</td>
-                                        <td>{{ $doctor->phone }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->price }}</td>
+                                        <td>{{ $item->category }}</td>
+                                        <td>{{ $item->description }}</td>
                                         <td>
-                                            <a href="" class="btn btn-xs btn-outline-success" data-toggle="modal"
-                                            data-target="#detailQR{{$doctor->id}}">
-                                                <i class="fa fa-trash"></i>&ensp;Look QR-Code</a>
-                                            <div class="modal fade" id="detailQR{{$doctor->id}}" tabindex="-1"
-                                                role="dialog" aria-labelledby="exampleModalLabel1">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="exampleModalLabel1">
-                                                                <b>Scan QRCode</b>
-                                                            </h4>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="{{asset('images/'.$doctor->qrcode)}}" alt="qrcode">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a href="{{ route('admin.doctor.edit', $doctor->id) }}"
-                                               class="btn btn-xs btn-outline-warning">
+                                            <a href="{{ route('user-petshop.item.edit', $item->id) }}" class="btn btn-xs btn-outline-warning">
                                                 <i class="fa fa-pencil"></i>&ensp;Edit</a>
                                             <a href="" class="btn btn-xs btn-outline-danger" data-toggle="modal"
-                                               data-target="#deleteModal{{$doctor->id}}">
+                                               data-target="#deleteModal{{$item->id}}">
                                                 <i class="fa fa-trash"></i>&ensp;Remove</a>
-                                            <div class="modal fade" id="deleteModal{{$doctor->id}}" tabindex="-1"
+                                            <div class="modal fade" id="deleteModal{{$item->id}}" tabindex="-1"
                                                  role="dialog" aria-labelledby="exampleModalLabel1">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -100,13 +81,13 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{ route('admin.doctor.destroy', $doctor->id) }}"
+                                                            <form action="{{ route('user-petshop.item.destroy', $item->id) }}"
                                                                   method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <p>
                                                                     Are you sure to remove "
-                                                                    <b class="text-danger">{{ $doctor->name }}</b>"
+                                                                    <b class="text-danger">{{ $item->name }}</b>"
                                                                     ?
                                                                 </p>
                                                                 <div class="modal-footer">
@@ -117,8 +98,7 @@
                                                                     </button>
                                                                     <button type="submit"
                                                                             class="btn btn-outline-danger btn-sm">
-                                                                        <i class="fa fa-check"></i>&ensp;Yes, remove
-                                                                        this
+                                                                        <i class="fa fa-check"></i>&ensp;Yes, remove this
                                                                         record
                                                                     </button>
                                                                 </div>
@@ -132,6 +112,12 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="d-flex justify-content-center">
+                                {{ $items->links() }}
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <p class="subtitle">Showing {{ $items->firstItem() }} - {{ $items->lastItem() }} of {{ $items->total() }} entries</p>
+                            </div>
                         </div>
                     </div>
                 </div>

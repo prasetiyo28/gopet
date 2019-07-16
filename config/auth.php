@@ -52,16 +52,22 @@ return [
             'provider' => 'admins',
         ],
 
-        'admin-api' => [
-            'driver' => 'token',
-            'provider' => 'admins',
-            'hash' => false,
-        ],
+        // 'admin-api' => [
+        //     'driver' => 'token',
+        //     'provider' => 'admins',
+        //     'hash' => false,
+        // ],
 
         'petshop' => [
             'driver' => 'session',
             'provider' => 'petshops'
-        ]
+        ],
+
+        'doctor' => [
+            'driver' => 'session',
+            'provider' => 'doctors'
+        ],
+        
     ],
 
     /*
@@ -95,6 +101,11 @@ return [
         'petshops' => [
             'driver' => 'eloquent',
             'model' => App\UserPetshop::class,
+        ],
+
+        'doctors' => [
+            'driver' => 'eloquent',
+            'model' => App\Doctor::class,
         ],
 
         // 'users' => [
@@ -133,6 +144,12 @@ return [
 
         'petshops' => [
             'provider' => 'petshops',
+            'table' => 'password_resets',
+            'expire' => 15,
+        ],
+
+        'doctors' => [
+            'provider' => 'doctors',
             'table' => 'password_resets',
             'expire' => 15,
         ],

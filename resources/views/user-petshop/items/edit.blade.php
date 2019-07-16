@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('user-petshop.app')
 
 @section('additional-styles')
     <link rel="stylesheet" href="{{ asset('backend/assets/plugins/dropify/dist/css/dropify.min.css') }}">
@@ -8,11 +8,11 @@
     <div class="container-fluid">
         <div class="row page-titles">
             <div class="col-md-5 col-8 align-self-center">
-                <h3 class="text-themecolor m-b-0 m-t-0">Form New Doctor</h3>
+                <h3 class="text-themecolor m-b-0 m-t-0">Form Edit Item</h3>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('admin.doctor') }}">Doctor</a></li>
-                    <li class="breadcrumb-item active">New</li>
+                    <li class="breadcrumb-item"><a href="{{ route('user-petshop.item') }}">Item</a></li>
+                    <li class="breadcrumb-item active">Edit</li>
                 </ol>
             </div>
         </div>
@@ -41,63 +41,78 @@
                     <div class="card-header">
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.doctor.store') }}" method="post"
+                        <form action="{{ route('user-petshop.item.update', $item->id) }}" method="post"
                               enctype="multipart/form-data">
                             @csrf
+                            @method('PATCH')
                             <div class="form-body">
                                 <div class="row">
+                                    <div class="col-sm-12 col-md-8 align-self-center">
+                                        <div class="d-flex m-t-10 justify-content-end">
+                                            <div class="col-md-6">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <label for="input-file-now">Image <span
+                                                                    class="text-danger">*</span></label>
+                                                        <input name="image" data-max-file-size="1M" type="file"
+                                                               id="input-file-now" class="dropify form-control"
+                                                               data-default-file="{{ asset('/images/'.$item->image) }}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="control-label">Doctor Name <span
+                                            <label class="control-label">Item Name <span
                                                         class="text-danger">*</span></label>
                                             <input name="name" required type="text" id="name" class="form-control"
-                                                   placeholder="Enter doctor name">
+                                                   placeholder="Enter item name" value="{{ $item->name }}">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Category </label>
+                                            <span class="text-danger">*</span>
+                                            <div class="controls">
+                                                <select name="category" class="form-control custom-select"
+                                                        data-placeholder="Choose a Category" tabindex="1">
+                                                    <option value="Food" @if($item->category=='Food') selected @endif>Food</option>
+                                                    <option value="Medicine" @if($item->category=='Medicine') selected @endif>Medicine</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Item Price <span
+                                                        class="text-danger">*</span></label>
+                                            <div class="controls">
+                                                <input type="text" name="price" class="form-control" required
+                                                       data-validation-containsnumber-regex="(\d)+" value="{{ $item->price }}"
+                                                       data-validation-containsnumber-message="No Characters Allowed, Only Numbers"
+                                                       placeholder="Enter item price">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="control-label">Email <span
-                                                        class="text-danger">*</span></label>
-                                            <input name="email" required type="email" id="email" class="form-control"
-                                                   placeholder="Enter doctor email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">Password<span
-                                                        class="text-danger">*</span></label>
-                                            <input name="password" required type="password" id="password" class="form-control"
-                                                   placeholder="Enter password">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">Address<span
-                                                        class="text-danger">*</span></label>
-                                            <input name="address" required type="text" id="address" class="form-control"
-                                                   placeholder="Enter address">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">Phone<span
-                                                        class="text-danger">*</span></label>
-                                            <input name="phone" required type="text" id="phone" class="form-control"
-                                                   placeholder="Enter phone">
+                                            <label class="control-label">Description</label>
+                                            <textarea name="description" id="description" class="form-control" cols="30"
+                                                      rows="10" placeholder="Enter item description">{{ $item->description }}</textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-actions">
-                                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-check"></i>
-                                        Save
+                                    <button type="submit" class="btn btn-outline-warning"><i class="fa fa-check"></i>
+                                        Update
                                     </button>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 <header class="topbar">
     <nav class="navbar top-navbar navbar-expand-md navbar-light">
         <div class="navbar-header">
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" href="index.html">
                 <b>
                     {{--You can put here icon as well // <i class="wi wi-sunset"></i>--}}
                     {{--Dark Logo icon--}}
@@ -53,7 +53,8 @@
                                     </div>
                                 </div>
                             </li>
-                            <li><a href="{{ route('user-petshop.logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ route('doctor.logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                     </div>
                 </li>

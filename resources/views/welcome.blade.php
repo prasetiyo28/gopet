@@ -70,11 +70,9 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
+                        <a href="{{ route('user-petshop.login') }}">Petshop</a>
+                        <a href="{{ route('doctor.login') }}">Doctor</a>
+                        <a href="{{ route('admin.login') }}">Admin</a>
                     @endauth
                 </div>
             @endif

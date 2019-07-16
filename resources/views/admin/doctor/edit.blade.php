@@ -56,6 +56,46 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Email <span
+                                                        class="text-danger">*</span></label>
+                                            <input name="email" required type="email" id="email" class="form-control"
+                                                   placeholder="Enter doctor email" value="{{$doctor->email}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Password</label>
+                                            <input name="password" type="password" id="password" class="form-control"
+                                                   placeholder="Enter password">
+                                            <small class="text-blue">keep blank if you don't change the password</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Address<span
+                                                        class="text-danger">*</span></label>
+                                            <input name="address" required type="text" id="address" class="form-control"
+                                                   placeholder="Enter address" value="{{$doctor->address}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Phone<span
+                                                        class="text-danger">*</span></label>
+                                            <input name="phone" required type="text" id="phone" class="form-control"
+                                                   placeholder="Enter phone" value="{{$doctor->phone}}">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-outline-warning"><i class="fa fa-check"></i>
                                         Update

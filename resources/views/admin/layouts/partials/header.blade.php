@@ -1,7 +1,7 @@
 <header class="topbar">
     <nav class="navbar top-navbar navbar-expand-md navbar-light">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="">
                 <b>
                     {{--You can put here icon as well // <i class="wi wi-sunset"></i>--}}
                     {{--Dark Logo icon--}}
@@ -53,8 +53,6 @@
                                     </div>
                                 </div>
                             </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ route('admin.logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>

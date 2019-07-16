@@ -17,6 +17,12 @@ class CreateDoctorsTable extends Migration
             $table->bigIncrements('id');
             $table->string('qrcode')->nullable();
             $table->string('name');
+            $table->string('email')->unique();
+            $table->text('address');
+            $table->string('phone');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

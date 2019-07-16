@@ -23,7 +23,7 @@
                                     <th>#</th>
                                     <th>User</th>
                                     <th>Seller</th>
-                                    <th>Food</th>
+                                    <th>Item</th>
                                     <th>Status</th>
                                     <th>Created At</th>
                                 </tr>
@@ -34,7 +34,7 @@
                                         <td>{{ ($currentPage - 1) * $perPage + $key +  1 }}</td>
                                         <td>{{ $order->user->name }}</td>
                                         <td>{{ $order->userPetshop->name }}</td>
-                                        <td>{{ $order->food->name }}</td>
+                                        <td>{{ $order->item->name }}</td>
                                         <td>@if($order->status == 0) <span class="text-danger">Belum Proses</span> @else <span class="text-success">Sudah Proses</span> @endif</td>
                                         <td>{{ $order->created_at }}</td>
                                     </tr>

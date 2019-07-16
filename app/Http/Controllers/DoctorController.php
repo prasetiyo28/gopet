@@ -54,10 +54,18 @@ class DoctorController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'email' => 'required|email|unique:doctors',
+            'password' => 'required|min:6',
+            'phone' => 'required',
+            'address' => 'required',
         ]);
 
         $doctor = new Doctor();
         $doctor->name = $request->name;
+        $doctor->email = $request->email;
+        $doctor->password = bcrypt($request->password);
+        $doctor->address = $request->address;
+        $doctor->phone = $request->phone;
         $doctor->save();
 
         $doctor = Doctor::where('id', $doctor->id)->first();
@@ -107,10 +115,21 @@ class DoctorController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'email' => "required|email|unique:doctors,email,$id",
+            'phone' => 'required',
+            'address' => 'required',
         ]);
 
         $doctor = Doctor::find($id);
         $doctor->name = $request->name;
+        if($doctor->email != $request->email){
+            $doctor->email = $request->email;
+        }
+        if($request->password != null) {
+            $doctor->password = bcrypt($request->password);
+        }
+        $doctor->address = $request->address;
+        $doctor->phone = $request->phone;
 
         $doctor->update();
         return redirect()->route('admin.doctor')->with(['success'=>'A chosen doctor has been updated successfully']);

@@ -17,12 +17,12 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('id_user')->unsigned();
             $table->bigInteger('id_petshop')->unsigned();
-            $table->bigInteger('id_food')->unsigned();
+            $table->bigInteger('id_item')->unsigned();
             $table->boolean('status')->default(false);
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_petshop')->references('id')->on('user_petshops');
-            $table->foreign('id_food')->references('id')->on('foods');
+            $table->foreign('id_item')->references('id')->on('items');
         });
     }
 

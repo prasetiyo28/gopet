@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('gopet');
 
 Auth::routes();
 
@@ -30,6 +30,13 @@ Route::get('petshop/register', 'PetshopAuth\PetshopAuthController@showFormRegist
 Route::post('petshop/register', 'PetshopAuth\PetshopAuthController@register')->name('user-petshop.register');
 Route::get('petshop/order', 'PetshopAuth\OrderController@index')->name('user-petshop.order');
 Route::patch('petshop/order/{id}', 'PetshopAuth\OrderController@update')->name('user-petshop.update');
+Route::get('petshop/item', 'PetshopAuth\ItemController@index')->name('user-petshop.item');
+Route::get('petshop/item/create', 'PetshopAuth\ItemController@create')->name('user-petshop.item.create');
+Route::post('petshop/item/store', 'PetshopAuth\ItemController@store')->name('user-petshop.item.store');
+Route::get('petshop/item/{id}/edit', 'PetshopAuth\ItemController@edit')->name('user-petshop.item.edit');
+Route::patch('petshop/item/{id}', 'PetshopAuth\ItemController@update')->name('user-petshop.item.update');
+Route::delete('petshop/item/{id}', 'PetshopAuth\ItemController@destroy')->name('user-petshop.item.destroy');
+
 
 Route::prefix('admin')->group(function() {
     Route::get('/', 'AdminController@index')->name('admin.home');
@@ -37,20 +44,6 @@ Route::prefix('admin')->group(function() {
     Route::get('/login', 'AdminAuth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'AdminAuth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/logout', 'AdminAuth\AdminLoginController@logout')->name('admin.logout');
-
-    Route::get('/foods', 'FoodController@index')->name('admin.food');
-    Route::get('/foods/create', 'FoodController@create')->name('admin.food.create');
-    Route::post('/foods', 'FoodController@store')->name('admin.food.store');
-    Route::get('/foods/{id}/edit', 'FoodController@edit')->name('admin.food.edit');
-    Route::patch('/foods/{id}', 'FoodController@update')->name('admin.food.update');
-    Route::delete('/foods/{id}', 'FoodController@destroy')->name('admin.food.destroy');
-
-    Route::get('/medicine', 'MedicineController@index')->name('admin.medicine');
-    Route::get('/medicine/create', 'MedicineController@create')->name('admin.medicine.create');
-    Route::post('/medicine', 'MedicineController@store')->name('admin.medicine.store');
-    Route::get('/medicine/{id}/edit', 'MedicineController@edit')->name('admin.medicine.edit');
-    Route::patch('/medicine/{id}', 'MedicineController@update')->name('admin.medicine.update');
-    Route::delete('/medicine/{id}', 'MedicineController@destroy')->name('admin.medicine.destroy');
 
     Route::get('/washing-and-spa', 'WashingAndSpaController@index')->name('admin.washing-and-spa');
     Route::get('/washing-and-spa/create', 'WashingAndSpaController@create')->name('admin.washing-and-spa.create');
@@ -90,3 +83,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/order', 'OrderController@index')->name('admin.order');
 
 });
+
+Route::get('doctor/login', 'DoctorAuth\DoctorAuthController@showFormLogin')->name('doctor.showFormLogin');
+Route::post('doctor/login', 'DoctorAuth\DoctorAuthController@login')->name('doctor.login');
+Route::get('doctor/logout', 'DoctorAuth\DoctorAuthController@logoutDoctor')->name('doctor.logout');
+Route::get('doctor', 'DoctorAuth\DoctorController@index')->name('doctor.home');
