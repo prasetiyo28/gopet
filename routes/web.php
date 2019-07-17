@@ -80,6 +80,9 @@ Route::prefix('admin')->group(function() {
     Route::patch('/doctor/{id}', 'DoctorController@update')->name('admin.doctor.update');
     Route::delete('/doctor/{id}', 'DoctorController@destroy')->name('admin.doctor.destroy');
 
+    Route::get('user-petshop', 'AdminController@userPetshop')->name('admin.user-petshop');
+    Route::get('user', 'AdminController@user')->name('admin.user');
+
     Route::get('/order', 'OrderController@index')->name('admin.order');
 
 });

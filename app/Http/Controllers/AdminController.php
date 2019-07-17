@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\UserPetshop;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -24,5 +26,27 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.home');
+    }
+    
+    public function userPetshop()
+    {
+        $userPetshops = UserPetshop::orderBy('created_at', 'DESC')->paginate(5);
+        return view('admin.user-petshop.user-petshop', [
+            'userPetshops' => $userPetshops,
+            'total' => $userPetshops->total(),
+            'perPage' => $userPetshops->perPage(),
+            'currentPage' => $userPetshops->currentPage(),
+        ]);
+    }
+
+    public function user()
+    {
+        $users = User::orderBy('created_at', 'DESC')->paginate(5);
+        return view('admin.user.user', [
+            'users' => $users,
+            'total' => $users->total(),
+            'perPage' => $users->perPage(),
+            'currentPage' => $users->currentPage(),
+        ]);
     }
 }
