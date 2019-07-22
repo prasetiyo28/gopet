@@ -286,18 +286,18 @@
     <property name="SearchEverywhereHistoryKey" value="side&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/resources/views/user-petshop/partials/sidebar.blade.php&#10;sidebar&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/resources/views/admin/layouts/partials/sidebar.blade.php&#10;doc&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/resources/views/admin/doctor&#10;api&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/routes/api.php&#10;ap&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/app/Http/Controllers/PetshopAuth/PetshopAuthController.php&#10;user&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/app/Http/Controllers/Api/UserPetshopController.php&#10;order&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/app/Http/Controllers/PetshopAuth/OrderController.php&#10;dia&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/resources/views/doctor/diagnosa/diagnosa.blade.php&#10;ite&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/app/Http/Controllers/PetshopAuth/ItemController.php&#10;web&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/routes/web.php&#10;admin&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/app/Http/Controllers/AdminController.php&#10;app&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/resources/views/doctor/layouts/app.blade.php&#10;orde&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/app/Order.php&#10;diag&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/database/migrations/2019_06_28_011618_create_diagnoses_table.php&#10;ord&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/app/Order.php&#10;login&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/resources/views/doctor/login.blade.php&#10;User&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/app/UserPetshop.php&#10;re&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/app/Http/Middleware/RedirectIfAuthenticated.php&#10;han&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/app/Exceptions/Handler.php&#10;we&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/routes/web.php&#10;item&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/app/Http/Controllers/PetshopAuth/ItemController.php&#10;ed&#9;FILE&#9;file://D:/Dev/PHP/Framework/Laravel/gopet-app/resources/views/user-petshop/items/edit.blade.php" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\public" />
-      <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\resources\views\user-petshop\items" />
-      <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\resources\views\admin\doctor" />
-      <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\resources\views\admin\community" />
-      <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\resources\views\admin\petshop" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\resources\views\admin\item" />
       <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\app\Http\Controllers\PetshopAuth" />
       <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\resources\views\user-petshop" />
       <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\resources\views\user-petshop\layouts" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\public\images" />
+      <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\public" />
+      <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\resources\views\user-petshop\items" />
+      <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\resources\views\admin\doctor" />
+      <recent name="D:\Dev\PHP\Framework\Laravel\gopet-app\resources\views\admin\community" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -342,12 +342,12 @@
       <workItem from="1563346251460" duration="1964000" />
       <workItem from="1563370695183" duration="18051000" />
       <workItem from="1563453107784" duration="24297000" />
-      <workItem from="1563778604176" duration="808000" />
+      <workItem from="1563778604176" duration="1014000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159459000" />
+    <option name="totallyTimeSpent" value="159665000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
