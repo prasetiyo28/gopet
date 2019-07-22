@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Order;
 use App\Response;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class UserPetshopController extends Controller
@@ -15,6 +17,40 @@ class UserPetshopController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => "required|email|unique:users,email,$user->id",
+//            'password' => '',
+            'address' => 'required',
+            'phone' => 'required',
+            'image' => 'image|mimes:png,jpg,jpeg|max:2048'
+        ]);
+        if ($request->image != null){
+            if ($user->image != 'default.png'){
+                Storage::delete($user->image);
+            }
+            $image = $request->file('image')->store('users');
+            $user->image = $image;
+        }
+//        if ($request->password != null){
+//            $user->password = bcrypt($request->password);
+//        }
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+
+        $user->update();
+        return response()->json([
+            'status' => true,
+            'message' => 'your profile has been updated',
+            'data' => $user
+        ]);
     }
 
     public function history() {
@@ -30,7 +66,7 @@ class UserPetshopController extends Controller
                 'petshop' => $history->userPetshop->name,
                 'id_item' => $history->item->id,
                 'item' => $history->item->name,
-                'price' => $history->item->price,
+                'price' => "Rp. ".number_format($history->item->price, 0, ',', '.'),
                 'status' => $history->status,
                 'created_at' => $history->created_at->format('d-M-Y')
             ];

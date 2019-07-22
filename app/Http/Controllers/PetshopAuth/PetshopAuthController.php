@@ -52,7 +52,7 @@ class PetshopAuthController extends Controller
             'password' => 'required'
         ]);
         if (!Auth::guard('petshop')->attempt(['email' => $request->email, 'password' => $request->password], $request->member)) {
-            return back()->withInput($request->only('email', 'remember'));
+            return back()->withInput($request->only('email', 'remember'))->with(['error'=>'please insert correct email or password']);
         }
         return redirect()->route('user-petshop.home');
     }

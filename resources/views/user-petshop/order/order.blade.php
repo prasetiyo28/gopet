@@ -22,7 +22,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>User</th>
-                                    <th>Food</th>
+                                    <th>Item</th>
                                     <th>Status</th>
                                     <th>Created At</th>
                                     <th>Change Status</th>
@@ -33,7 +33,7 @@
                                     <tr>
                                         <td>{{ ($currentPage - 1) * $perPage + $key +  1 }}</td>
                                         <td>{{ $order->user->name }}</td>
-                                        <td>{{ $order->food->name }}</td>
+                                        <td>{{ $order->item->name }}</td>
                                         <td>@if($order->status == 0) <span class="text-danger">Belum Proses</span> @else <span class="text-success">Sudah Proses</span> @endif</td>
                                         <td>{{ $order->created_at }}</td>
                                         <td>
@@ -60,7 +60,7 @@
                                                                 @method('PATCH')
                                                                 <p>
                                                                     Are you sure to change status "
-                                                                    <b class="text-danger">{{ $order->name }}</b>"
+                                                                    <b class="text-danger">{{ $order->item->name }}</b>"
                                                                     ?
                                                                 </p>
                                                                 <div class="modal-footer">

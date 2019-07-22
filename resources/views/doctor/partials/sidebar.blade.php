@@ -2,7 +2,7 @@
     <div class="scroll-sidebar">
         <div class="user-profile"
              style="background: url({{ asset('backend//assets/images/background/user-info.jpg') }}) no-repeat;">
-            <div class="profile-img"><img src="{{ asset('images/default.png') }}" alt="user"/>
+            <div class="profile-img"><img src="{{ asset('images/' . Auth::user()->image) }}" alt="user"/>
             </div>
             <div class="profile-text">
                 <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"
@@ -15,10 +15,10 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="{{ Request::segment(2) === '' || Request::segment(2) === 'home' ? 'active' : null }}">
-                    <a href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">&ensp;Dashboard</span></a>
+                    <a href="{{ route('doctor.home') }}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">&ensp;Dashboard</span></a>
                 </li>
                 <li class="{{ Request::segment(2) === 'petshop' ? 'active' : null }}">
-                    <a href="#" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">&ensp;Diagnosis</span></a>
+                    <a href="{{ route('doctor.diagnosa') }}" aria-expanded="false"><i class="fa fa-stethoscope"></i><span class="hide-menu">&ensp;Diagnosis</span></a>
                 </li>
             </ul>
         </nav>

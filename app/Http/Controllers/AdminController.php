@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use App\User;
 use App\UserPetshop;
 use Illuminate\Http\Request;
@@ -47,6 +48,17 @@ class AdminController extends Controller
             'total' => $users->total(),
             'perPage' => $users->perPage(),
             'currentPage' => $users->currentPage(),
+        ]);
+    }
+
+    public function item()
+    {
+        $items = Item::orderBy('created_at', 'DESC')->paginate();
+        return view('admin.item.item', [
+            'items' => $items,
+            'total' => $items->total(),
+            'perPage' => $items->perPage(),
+            'currentPage' => $items->currentPage(),
         ]);
     }
 }

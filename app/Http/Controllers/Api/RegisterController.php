@@ -16,12 +16,16 @@ class RegisterController extends Controller
         $this->validate($request, [
             'name' => 'required|string|min:5',
             'email' => 'required|email|unique:users',
+            'address' => 'required',
+            'phone' => 'required',
             'password' => 'required|min:6',
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'address' => $request->address,
+            'phone' => $request->phone,
             'password' => bcrypt($request->password),
             'api_token' => bcrypt($request->email),
         ]);

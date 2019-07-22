@@ -20,7 +20,7 @@ class Doctor extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'qrcode', 'name', 'email', 'password'
+        'image', 'name', 'email', 'password'
     ];
 
     /**

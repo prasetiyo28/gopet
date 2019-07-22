@@ -33,15 +33,20 @@ Route::get('community/{id}', 'Api\CommunityController@show');
 Route::get('doctor', 'Api\DoctorController@index');
 Route::get('doctor/{id}', 'Api\DoctorController@show');
 
-// Route for all history for each user.
-Route::get('history/{user_id}', 'Api\DiagnosisController@showByUser');
-
 // Route get order history for each user
 Route::get('user/order/history', 'Api\UserPetshopController@history');
 
 // route for register user
 Route::post('user/register', 'Api\RegisterController@store');
+
 // route for login user
 Route::post('user/login', 'Api\LoginController@store');
 
+// route for update profile user
+Route::post('user/profile/update', 'Api\UserPetshopController@updateProfile');
+
+// Routes user for order
 Route::post('user/order', 'Api\UserPetshopController@store');
+
+Route::post('user/diagnosis', 'Api\DiagnosisController@store');
+Route::get('user/diagnosis/history', 'Api\DiagnosisController@history');

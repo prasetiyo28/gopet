@@ -7,26 +7,54 @@ use App\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class DiagnosisController extends Controller
 {
-    public function showByUser($user_id)
+
+
+    /**
+     * DiagnosisController constructor.
+     */
+    public function __construct()
     {
-        $diagnosis = Diagnosis::where('user_id', $user_id)->get();
-        if (is_null($diagnosis)) {
+        $this->middleware('auth:api');
+    }
+
+    public function history()
+    {
+        $histories = Diagnosis::where('id_user', Auth::user()->id)->get();
+        // return response()->json(Response::transform($histories, "All histories found", true), 200);
+        $result=[];
+        foreach($histories as $history){
+            $result[] = [
+                'id' => $history->id,
+                'pet_name' => $history->pet_name,
+                'id_doctor' => $history->doctor->id,
+                'doctor' => $history->doctor->name,
+                'diagnosis' => $history->diagnosis,
+                'created_at' => $history->created_at->format('d-M-Y')
+            ];
+        }
+
+        if ($result==[]) {
             return response()->json(array('message' => 'record not found', 'status' => false), 200);
-        } else {
-            return response()->json(Response::transform($diagnosis, "all diagnosis found", true), 200);
+        }else{
+            return response()->json(
+                [
+                    'message' => "All Histories Found",
+                    'status' => true,
+                    'data' => $result
+                ], 200
+            );
         }
     }
 
     public function store(Request $request)
     {
         $rules = [
-            'doctor_id' => 'required',
-            'user_id' => 'required',
+            'id_doctor' => 'required',
             'pet_name' => 'required',
-            'diagnosis' => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -36,10 +64,9 @@ class DiagnosisController extends Controller
                 'status' => false), 400);
         } else {
             $diagnosis = new Diagnosis();
-            $diagnosis->doctor_id = $request->doctor_id;
-            $diagnosis->user_id = Auth::user()->id;
+            $diagnosis->id_doctor = $request->id_doctor;
+            $diagnosis->id_user = Auth::user()->id;
             $diagnosis->pet_name = $request->pet_name;
-            $diagnosis->diagnosis = $request->diagnosis;
             $diagnosis->save();
             return response()->json(
                 Response::transform($diagnosis, "A new diagnosis has been created", true), 201

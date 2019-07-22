@@ -30,16 +30,19 @@
                     <a href="{{ route('admin.community') }}" aria-expanded="false"><i class="mdi mdi-google-circles-communities"></i><span class="hide-menu">&ensp;Community</span></a>
                 </li>
                 <li class="{{ Request::segment(2) === 'doctor' ? 'active' : null }}">
-                    <a href="{{ route('admin.doctor') }}" aria-expanded="false"><i class="mdi mdi-google-circles-communities"></i><span class="hide-menu">&ensp;Doctor</span></a>
+                    <a href="{{ route('admin.doctor') }}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">&ensp;Doctor</span></a>
                 </li>
                 <li class="{{ Request::segment(2) === 'user-petshop' ? 'active' : null }}">
-                    <a href="{{ route('admin.user-petshop') }}" aria-expanded="false"><i class="mdi mdi-google-circles-communities"></i><span class="hide-menu">&ensp;User Petshop</span></a>
+                    <a href="{{ route('admin.user-petshop') }}" aria-expanded="false"><i class="fa fa-user-o"></i><span class="hide-menu">&ensp;User Petshop</span></a>
                 </li>
                 <li class="{{ Request::segment(2) === 'user' ? 'active' : null }}">
-                    <a href="{{ route('admin.user') }}" aria-expanded="false"><i class="mdi mdi-google-circles-communities"></i><span class="hide-menu">&ensp;User</span></a>
+                    <a href="{{ route('admin.user') }}" aria-expanded="false"><i class="fa fa-user-o"></i><span class="hide-menu">&ensp;User</span></a>
+                </li>
+                <li class="{{ Request::segment(2) === 'item' ? 'active' : null }}">
+                    <a href="{{ route('admin.item') }}" aria-expanded="false"><i class="fa fa-file-image-o"></i><span class="hide-menu">&ensp;Item</span></a>
                 </li>
                 <li class="{{ Request::segment(2) === 'order' ? 'active' : null }}">
-                    <a href="{{ route('admin.order') }}" aria-expanded="false"><i class="mdi mdi-google-circles-communities"></i><span class="hide-menu">&ensp;Order</span></a>
+                    <a href="{{ route('admin.order') }}" aria-expanded="false"><i class="fa fa-dollar"></i><span class="hide-menu">&ensp;Order</span></a>
                 </li>
             </ul>
         </nav>

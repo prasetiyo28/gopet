@@ -15,14 +15,14 @@ class CreateDiagnosesTable extends Migration
     {
         Schema::create('diagnoses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('doctor_id');
-            $table->unsignedBigInteger('user_id');
+            $table->bigInteger('id_doctor')->unsigned();
+            $table->bigInteger('id_user')->unsigned();
             $table->string('pet_name');
-            $table->text('diagnosis');
+            $table->text('diagnosis')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('doctor_id')->references('id')->on('doctors');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('id_doctor')->references('id')->on('doctors');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

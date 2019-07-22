@@ -85,9 +85,13 @@ Route::prefix('admin')->group(function() {
 
     Route::get('/order', 'OrderController@index')->name('admin.order');
 
+    Route::get('/item', 'AdminController@item')->name('admin.item');
+
 });
 
 Route::get('doctor/login', 'DoctorAuth\DoctorAuthController@showFormLogin')->name('doctor.showFormLogin');
 Route::post('doctor/login', 'DoctorAuth\DoctorAuthController@login')->name('doctor.login');
 Route::get('doctor/logout', 'DoctorAuth\DoctorAuthController@logoutDoctor')->name('doctor.logout');
 Route::get('doctor', 'DoctorAuth\DoctorController@index')->name('doctor.home');
+Route::get('doctor/diagnosa', 'DoctorAuth\DoctorController@diagnosa')->name('doctor.diagnosa');
+Route::patch('doctor/diagnosa/{id}', 'DoctorAuth\DoctorController@updateDiagnosa')->name('doctor.diagnosa.update');

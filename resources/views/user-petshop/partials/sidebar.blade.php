@@ -19,10 +19,10 @@
                     <a href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">&ensp;Dashboard</span></a>
                 </li>
                 <li class="{{ Request::segment(2) === 'item' ? 'active' : null }}">
-                    <a href="{{ route('user-petshop.item') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">&ensp;Item</span></a>
+                    <a href="{{ route('user-petshop.item') }}" aria-expanded="false"><i class="fa fa-file-image-o"></i><span class="hide-menu">&ensp;Item</span></a>
                 </li>
                 <li class="{{ Request::segment(2) === 'petshop' ? 'active' : null }}">
-                    <a href="{{ route('user-petshop.order') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">&ensp;Order</span></a>
+                    <a href="{{ route('user-petshop.order') }}" aria-expanded="false"><i class="fa fa-dollar"></i><span class="hide-menu">&ensp;Order</span></a>
                 </li>
             </ul>
         </nav>

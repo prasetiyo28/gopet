@@ -41,8 +41,11 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>QR-Code</th>
+                                    <th>Image</th>
                                     <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -51,35 +54,13 @@
                                     <tr>
                                         <td>{{ ($currentPage - 1) * $perPage + $key +  1 }}</td>
                                         <td>
-                                            <img src="{{ asset('images/' . $doctor->qrcode) }}" style="height: 200%;width: auto" alt="qrcode">
+                                            <img src="{{ asset('images/' . $doctor->image) }}" style="height: 80px;width: auto" alt="qrcode">
                                         </td>
                                         <td>{{ $doctor->name }}</td>
                                         <td>{{ $doctor->email }}</td>
                                         <td>{{ $doctor->address }}</td>
                                         <td>{{ $doctor->phone }}</td>
                                         <td>
-                                            <a href="" class="btn btn-xs btn-outline-success" data-toggle="modal"
-                                            data-target="#detailQR{{$doctor->id}}">
-                                                <i class="fa fa-trash"></i>&ensp;Look QR-Code</a>
-                                            <div class="modal fade" id="detailQR{{$doctor->id}}" tabindex="-1"
-                                                role="dialog" aria-labelledby="exampleModalLabel1">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="exampleModalLabel1">
-                                                                <b>Scan QRCode</b>
-                                                            </h4>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="{{asset('images/'.$doctor->qrcode)}}" alt="qrcode">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <a href="{{ route('admin.doctor.edit', $doctor->id) }}"
                                                class="btn btn-xs btn-outline-warning">
                                                 <i class="fa fa-pencil"></i>&ensp;Edit</a>

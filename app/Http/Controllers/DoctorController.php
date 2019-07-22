@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -53,6 +54,7 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'image' => 'required|mimes:png,jpg,jpeg|max:2048',
             'name' => 'required',
             'email' => 'required|email|unique:doctors',
             'password' => 'required|min:6',
@@ -61,20 +63,14 @@ class DoctorController extends Controller
         ]);
 
         $doctor = new Doctor();
+        $image = $request->file('image')->store('doctors');
+        $doctor->image = $image;
         $doctor->name = $request->name;
         $doctor->email = $request->email;
         $doctor->password = bcrypt($request->password);
         $doctor->address = $request->address;
         $doctor->phone = $request->phone;
         $doctor->save();
-
-        $doctor = Doctor::where('id', $doctor->id)->first();
-
-        $randomFilename = Str::random(32);
-        QrCode::size(500)->format('png')->generate($doctor->id, public_path("images/qrcode/" . $randomFilename . ".png"));
-
-        $doctor->qrcode = "qrcode/" . $randomFilename . ".png";
-        $doctor->update();
 
         return redirect()->route('admin.doctor')->with(['success'=>'A new doctor has been created successfully']);
     }
@@ -114,6 +110,7 @@ class DoctorController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'image' => 'mimes:png,jpg,jpeg|max:2048',
             'name' => 'required',
             'email' => "required|email|unique:doctors,email,$id",
             'phone' => 'required',
@@ -121,6 +118,12 @@ class DoctorController extends Controller
         ]);
 
         $doctor = Doctor::find($id);
+
+        if ($request->image != null){
+            $image = $request->file('image')->store('doctors');
+            Storage::delete($doctor->image);
+            $doctor->image = $image;
+        }
         $doctor->name = $request->name;
         if($doctor->email != $request->email){
             $doctor->email = $request->email;

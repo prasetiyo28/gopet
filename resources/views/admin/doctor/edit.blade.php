@@ -47,6 +47,23 @@
                             @method('PATCH')
                             <div class="form-body">
                                 <div class="row">
+                                    <div class="col-sm-12 col-md-8 align-self-center">
+                                        <div class="d-flex m-t-10 justify-content-end">
+                                            <div class="col-md-6">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <label for="input-file-now">Image <span
+                                                                    class="text-danger">*</span></label>
+                                                        <input name="image" data-max-file-size="2M" type="file"
+                                                               id="input-file-now" class="dropify form-control"
+                                                               data-default-file="{{ asset('images/'. $doctor->image) }}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">Doctor Name <span
