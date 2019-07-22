@@ -67,7 +67,7 @@ class UserPetshopController extends Controller
                 'id_item' => $history->item->id,
                 'item' => $history->item->name,
                 'price' => "Rp. ".number_format($history->item->price, 0, ',', '.'),
-                'status' => $history->status,
+                'status' => $history->status == true ? 'Sudah Diproses' : 'Belum Diproses',
                 'created_at' => $history->created_at->format('d-M-Y')
             ];
         }
