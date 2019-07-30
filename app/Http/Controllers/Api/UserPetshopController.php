@@ -19,13 +19,23 @@ class UserPetshopController extends Controller
         $this->middleware('auth:api');
     }
 
+    public function profile()
+    {
+        $profile = User::find(Auth::user()->id);
+        return response()->json([
+            'status' => true,
+            'message' => 'success getting profile',
+            'data' => $profile
+        ]);
+    }
+
     public function updateProfile(Request $request)
     {
-        $user = User::find(Auth::user()->id);
+        $id = Auth::user()->id;
+        $user = User::find($id);
         $this->validate($request, [
             'name' => 'required',
-            'email' => "required|email|unique:users,email,$user->id",
-//            'password' => '',
+            'email' => "required|email|unique:users,email,$id",
             'address' => 'required',
             'phone' => 'required',
             'image' => 'image|mimes:png,jpg,jpeg|max:2048'
@@ -37,9 +47,9 @@ class UserPetshopController extends Controller
             $image = $request->file('image')->store('users');
             $user->image = $image;
         }
-//        if ($request->password != null){
-//            $user->password = bcrypt($request->password);
-//        }
+        if ($request->password != null){
+            $user->password = bcrypt($request->password);
+        }
         $user->name = $request->name;
         $user->email = $request->email;
         $user->address = $request->address;

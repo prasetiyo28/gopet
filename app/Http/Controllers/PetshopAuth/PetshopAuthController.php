@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\PetshopAuth;
 
+use App\PetShop;
 use App\UserPetshop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

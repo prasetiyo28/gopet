@@ -41,14 +41,14 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ asset('images/default.png') }}" alt="user" class="profile-pic"/>
+                        <img src="{{ asset('images/' . Auth::user()->image) }}" alt="user" class="profile-pic"/>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right scale-up">
                         <ul class="dropdown-user">
                             <li>
                                 <div class="dw-user-box">
                                     <div class="u-img">
-                                        <img src="{{ asset('images/default.png') }}" alt="user">
+                                        <img src="{{ asset('images/' . Auth::user()->image) }}" alt="user">
                                     </div>
                                     <div class="u-text">
                                         <h4>{{ Auth::user()->name }}</h4>
@@ -56,6 +56,9 @@
                                     </div>
                                 </div>
                             </li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ route('user-petshop.profile') }}"><i class="ti-user"></i> My Profile</a></li>
+                            <li role="separator" class="divider"></li>
                             <li><a href="{{ route('user-petshop.logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                     </div>

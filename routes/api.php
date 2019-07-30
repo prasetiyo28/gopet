@@ -43,6 +43,7 @@ Route::post('user/register', 'Api\RegisterController@store');
 Route::post('user/login', 'Api\LoginController@store');
 
 // route for update profile user
+Route::get('user/profile', 'Api\UserPetshopController@profile');
 Route::post('user/profile/update', 'Api\UserPetshopController@updateProfile');
 
 // Routes user for order

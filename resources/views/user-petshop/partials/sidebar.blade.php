@@ -8,6 +8,7 @@
                 <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"
                    aria-haspopup="true" aria-expanded="true">{{ Auth::user()->name }}</a>
                 <div class="dropdown-menu animated flipInY">
+                    <a href="{{ route('user-petshop.profile') }}" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('user-petshop.logout') }}" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
                 </div>
@@ -16,7 +17,7 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="{{ Request::segment(2) === '' || Request::segment(2) === 'home' ? 'active' : null }}">
-                    <a href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">&ensp;Dashboard</span></a>
+                    <a href="{{ route('user-petshop.home') }}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">&ensp;Dashboard</span></a>
                 </li>
                 <li class="{{ Request::segment(2) === 'item' ? 'active' : null }}">
                     <a href="{{ route('user-petshop.item') }}" aria-expanded="false"><i class="fa fa-file-image-o"></i><span class="hide-menu">&ensp;Item</span></a>

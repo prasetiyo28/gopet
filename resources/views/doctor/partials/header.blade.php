@@ -57,6 +57,8 @@
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>
+                            <li><a href="{{ route('doctor.profile') }}"><i class="ti-user"></i> My Profile</a></li>
+                            <li role="separator" class="divider"></li>
                             <li><a href="{{ route('doctor.logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                     </div>

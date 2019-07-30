@@ -36,6 +36,8 @@ Route::post('petshop/item/store', 'PetshopAuth\ItemController@store')->name('use
 Route::get('petshop/item/{id}/edit', 'PetshopAuth\ItemController@edit')->name('user-petshop.item.edit');
 Route::patch('petshop/item/{id}', 'PetshopAuth\ItemController@update')->name('user-petshop.item.update');
 Route::delete('petshop/item/{id}', 'PetshopAuth\ItemController@destroy')->name('user-petshop.item.destroy');
+Route::get('petshop/profile', 'PetshopAuth\PetshopController@profile')->name('user-petshop.profile');
+Route::patch('petshop/profile', 'PetshopAuth\PetshopController@updateProfile')->name('user-petshop.profile.update');
 
 
 Route::prefix('admin')->group(function() {
@@ -95,3 +97,5 @@ Route::get('doctor/logout', 'DoctorAuth\DoctorAuthController@logoutDoctor')->nam
 Route::get('doctor', 'DoctorAuth\DoctorController@index')->name('doctor.home');
 Route::get('doctor/diagnosa', 'DoctorAuth\DoctorController@diagnosa')->name('doctor.diagnosa');
 Route::patch('doctor/diagnosa/{id}', 'DoctorAuth\DoctorController@updateDiagnosa')->name('doctor.diagnosa.update');
+Route::get('doctor/profile', 'DoctorAuth\DoctorController@profile')->name('doctor.profile');
+Route::patch('doctor/profile', 'DoctorAuth\DoctorController@updateProfile')->name('doctor.profile.update');
